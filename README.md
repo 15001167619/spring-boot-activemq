@@ -1,6 +1,6 @@
 # SpringBoot-ActiveMQ
 
-## 概念
+## 一、概念
 ### 1、消息机制主要有三种
 #### 1.1、点对点(p2p)：包含三个角色：消息队列（Queue），发送者(Sender)，接收者(Receiver)。每个消息都被发送到一个特定的队列，接收者从队列中获取消息。队列保留着消息，直到他们被消费或超时。
 P2P的特点
@@ -36,3 +36,13 @@ Session是操作消息的接口。可以通过session创建生产者、消费者
 消息消费者由Session创建，用于接收被发送到Destination的消息。两种类型：QueueReceiver和TopicSubscriber。可分别通过session的createReceiver(Queue)或createSubscriber(Topic)来创建。当然，也可以session的creatDurableSubscriber方法来创建持久化的订阅者。
 #### 2.7、MessageListener
 消息监听器。如果注册了消息监听器，一旦消息到达，将自动调用监听器的onMessage方法。EJB中的MDB（Message-Driven Bean）就是一种MessageListener。
+## 二、测试
+### 普通订阅 和 列队模式
+
+#### 可通过浏览器访问 jms/queue?value=test 和 jms/topic?value=test 来出发消息的发送,来观察控制台获取信息的情况
+
+### 持久化的测试
+
+* 第一次启动, 会在浏览器 ActiveMQ 管理界面的 Subscribers 也签多出一个 ClientID 名为 client_id 的订阅者. Active Durable Topic Subscribers 表示当前持久订阅者在线, Offline Durable Topic Subscribers 表示当前 持久订阅者不在线.
+* 关闭你的服务, 注释掉 Topic2Receiver 中订阅的方法, 再次启动项目. Offline Durable Topic Subscribers 中会出现你的 clientID, 表示这个订阅者下线了. 你通过 jms/topic?value=test 这个接口发送消息, 会发现普通订阅者 正常的收到消息
+* 关闭服务, 打开刚才注释调的代码. 重新启动项目, 会发现上一次你发送的消息, 这个时候才收到
