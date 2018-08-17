@@ -1,0 +1,22 @@
+server:
+  port: 6080
+
+spring:
+  profiles:
+    active: dev
+
+---
+spring:
+  profiles: dev
+  activemq:
+    broker-url: tcp://localhost:61616
+    user: root
+    password: admin
+    pool:
+      enabled: true
+      max-connections: 50
+
+logging:
+  level.root: info
+  level.spring.boot.activemq: debug
+  file: G:/mylog/spring-boot-activemq.log
