@@ -33,7 +33,7 @@
                 <pattern>%p%d%msg%M%F{32}%L</pattern>
             </layout>
         </encoder>
-        <file>D:/eclipse/WorkSpace/shop/logs/error-log.html</file>
+        <file>${LOG_HOME}/error-log.html</file>
     </appender>
 
     <!-- 生成html格式日志结束 -->
