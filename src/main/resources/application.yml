@@ -16,7 +16,6 @@ spring:
       enabled: true
       max-connections: 50
 
+
 logging:
-  level.root: info
-  level.spring.boot.activemq: debug
-  file: G:/mylog/spring-boot-activemq.log
+  config: classpath:logback.xml

@@ -28,6 +28,8 @@
         <spring.boot.version>2.0.4.RELEASE</spring.boot.version>
         <lombok.version>1.16.18</lombok.version>
         <activemq-pool.version>5.15.5</activemq-pool.version>
+        <commons-io.version>2.6</commons-io.version>
+        <fastjson.version>1.2.49</fastjson.version>
     </properties>
 
     <!-- 设定主仓库-->
@@ -76,6 +78,18 @@
             <artifactId>activemq-pool</artifactId>
             <version>${activemq-pool.version}</version>
         </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
